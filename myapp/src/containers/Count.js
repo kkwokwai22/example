@@ -5,13 +5,12 @@ import { addOne, subtractOne } from '../actions/index';
 class Count extends Component {
 	render() {
 		const { Counter } = this.props;
-		let add = () => addOne();
-		let subtract = () => subtractOne();
+		const { addOneInCounter, subtractOneInCounter } = this.props;
 		return (
 			<div>
 				<h2>{Counter}</h2>
-				<button onClick={add}>add</button>
-				<button onClick={subtract}>subtract</button>
+				<button onClick={addOneInCounter}>add</button>
+				<button onClick={subtractOneInCounter}>subtract</button>
 			</div>
 		);
 	}
@@ -24,10 +23,11 @@ function mapStateToProps(state) {
 	};
 }
 
+// dispatch
 function mapDispatchToProps(dispatch) {
 	return {
-		addOne: () => dispatch(addOne()),
-		subtractOne: () => dispatch(subtractOne())
+		addOneInCounter: () => dispatch(addOne()),
+		subtractOneInCounter: () => dispatch(subtractOne())
 	};
 }
 
