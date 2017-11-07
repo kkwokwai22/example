@@ -12,7 +12,6 @@ class Input extends Component {
 		};
 
 		this.onInputChange = this.onInputChange.bind(this);
-		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
 
 	onInputChange(event) {
@@ -21,25 +20,20 @@ class Input extends Component {
 		});
 	}
 
-	onFormSubmit(event) {
-		event.preventDefault();
+	onClickHandler() {
 		this.props.addToDoItem(this.state.input);
-		this.setState({
-			input: ''
-		});
 	}
-
 	render() {
 		return (
-			<form onSubmit={this.onFormSubmit}>
+			<div>
 				<input
 					type="text"
 					placeholder="What you like to add"
 					value={this.state.input}
 					onChange={this.onInputChange}
 				/>
-				<button type="submit">Add Todo</button>
-			</form>
+				<button onClick={this.onClickHandler.bind(this)}>Add Todo</button>
+			</div>
 		);
 	}
 }
@@ -49,3 +43,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(Input);
+
+
+
+
+

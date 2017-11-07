@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { deleteItem } from '../actions/index';
 
 class TodoListItem extends Component {
   render() {
-    let renderList = this.props.Todolist.map(todo => {
+    const { deleteItem, Todolist } = this.props;
+    let renderList = Todolist.map((todo, index) => {
+      let onClickHandler = index => deleteItem(index);
       return (
-        <li key={todo}>
+        <li key={index}>
           {todo}
-          <button>delete</button>
+          <button onClick={onClickHandler}>delete</button>
         </li>
       );
     });
@@ -17,11 +19,19 @@ class TodoListItem extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.todolist);
   // this state.todolist comes from the global reducers(index.js) todolist: TodoListReducer
   return {
     Todolist: state.todolist
   };
 }
 
-export default connect(mapStateToProps, null)(TodoListItem);
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteItem: index => dispatch(deleteItem(index))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoListItem);
+
+// always deconstruct your props don't use this.props anymore
+// if you pass in a key to a

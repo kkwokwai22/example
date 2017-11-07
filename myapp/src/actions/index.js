@@ -5,6 +5,9 @@
 // bind to the container
 
 export const ADD_TODO_ITEM = 'ADD_TODO_ITEM';
+export const DELETE_ITEM = 'DELETE_ITEM';
+export const ADD_ONE = 'ADD_ONE';
+export const SUBTRACT_ONE = 'SUBTRACT_ONE';
 
 export function addToDoItem(todo) {
 	// SelectBook is a actionCreator, and it needs to return an action,
@@ -17,5 +20,23 @@ export function addToDoItem(todo) {
 		type: ADD_TODO_ITEM,
 		payload: todo
 	};
-} 
+}
 
+export function deleteItem(item) {
+	return {
+		type: DELETE_ITEM,
+		payload: item
+	};
+}
+
+export function addOne() {
+	return {
+		type: ADD_ONE
+	};
+}
+
+export function subtractOne() {
+	return {
+		type: SUBTRACT_ONE
+	};
+}
