@@ -7,7 +7,9 @@
 export const ADD_TODO_ITEM = 'ADD_TODO_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const ADD_ONE = 'ADD_ONE';
+export const MAKE_ZERO = 'MAKE_ZERO';
 export const SUBTRACT_ONE = 'SUBTRACT_ONE';
+export const CHANGE_COUNTER = 'CHANGE_COUNTER';
 
 export function addToDoItem(todo) {
 	// SelectBook is a actionCreator, and it needs to return an action,
@@ -29,6 +31,13 @@ export function deleteItem(item) {
 	};
 }
 
+export function changeCounter(input) {
+	return {
+		type: CHANGE_COUNTER,
+		payload: input
+	};
+}
+
 export function addOne() {
 	return {
 		type: ADD_ONE
@@ -38,5 +47,12 @@ export function addOne() {
 export function subtractOne() {
 	return {
 		type: SUBTRACT_ONE
+	};
+}
+
+export function makeZero() {
+	return {
+		type: MAKE_ZERO,
+		payload: 0
 	};
 }
